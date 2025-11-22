@@ -6,7 +6,7 @@ import { FiLogIn } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 export function Header() {
-  const [isLogged, setIsLogged] = useState(true); // Se o usuario esta logado ou não
+  const [isLogged, setIsLogged] = useState(false); // Se o usuario esta logado ou não
   const [loadingAuth, setLoadingAuth] = useState(false); // Se esta carregando ou não
 
   return (
