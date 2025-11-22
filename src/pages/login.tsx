@@ -21,7 +21,10 @@ export function Login() {
       .string()
       .email("Insira um email válido")
       .nonempty("O campo email é obrigatório"),
-    password: z.string().nonempty("O campo senha é obrigatório").min(4),
+    password: z
+      .string()
+      .nonempty("O campo senha é obrigatório")
+      .min(4, "A senha deve ter no mínimo 4 caracteres"),
   });
 
   type FormData = z.infer<typeof schema>;
@@ -94,6 +97,12 @@ export function Login() {
               </div>
             </form>
           </Form>
+          <p className="font-extralight text-center">
+            Ainda não possui uma conta?{" "}
+            <Link to={"/register"}>
+              <span className="font-light">Cadastra-se</span>
+            </Link>
+          </p>
         </main>
       </div>
     </Conteiner>
