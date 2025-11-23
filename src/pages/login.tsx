@@ -1,4 +1,6 @@
 import logo from "../assets/logo.svg";
+import { useEffect } from "react";
+
 import {
   FormControl,
   FormField,
@@ -14,7 +16,12 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../services/firebaseConnection";
+import { useNavigate } from "react-router-dom";
+
 export function Login() {
+  const navigate = useNavigate();
   // Zod define as regras do formulário
   const schema = z.object({
     email: z
@@ -36,8 +43,25 @@ export function Login() {
   });
 
   function handleLogin(data: FormData) {
-    console.log("Dados enviados:", data);
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((user) => {
+        console.log("Logado com sucesso!");
+        console.log(user);
+        navigate("/dashboard", { replace: true });
+      })
+      .catch((error) => {
+        console.log("Erro ao logar!");
+        console.log(error);
+      });
   }
+
+  useEffect(() => {
+    async function handleLogout() {
+      await signOut(auth);
+    }
+
+    handleLogout();
+  }, []);
 
   return (
     <Conteiner>

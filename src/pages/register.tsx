@@ -9,12 +9,22 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Conteiner } from "@/components/conteiner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { auth } from "@/services/firebaseConnection";
+import {
+  createUserWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
+import { useEffect } from "react";
+
 export function Register() {
+  const navigate = useNavigate();
+
   // Zod define as regras do formulário
   const schema = z.object({
     nome: z.string().min(3).nonempty("O campo nome é obrigatório"),
@@ -36,8 +46,27 @@ export function Register() {
     mode: "onChange",
   });
 
-  function handleLogin(data: FormData) {
-    console.log("Dados enviados:", data);
+  useEffect(() => {
+    async function handleLogout() {
+      await signOut(auth);
+    }
+
+    handleLogout();
+  }, []);
+
+  async function handleCadastro(data: FormData) {
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then(async (userCredencial) => {
+        await updateProfile(userCredencial.user, {
+          displayName: data.nome,
+        });
+        console.log("Cadastrado com sucesso!");
+        navigate("/dashboard", { replace: true });
+      })
+      .catch((error) => {
+        console.log("ERRO AO CADASTRAR ESTE USUARIO");
+        console.log(error);
+      });
   }
 
   return (
@@ -54,7 +83,7 @@ export function Register() {
 
           <Form {...form}>
             <form
-              onSubmit={form.handleSubmit(handleLogin)} // form.handleSubmit (Gerencia validação e envio) - useForm
+              onSubmit={form.handleSubmit(handleCadastro)} // form.handleSubmit (Gerencia validação e envio) - useForm
               className=" bg-white rounded-xl p-4"
             >
               <div className="flex flex-col gap-6">
@@ -112,7 +141,7 @@ export function Register() {
                   )}
                 />
 
-                <Button type="submit">Acessar</Button>
+                <Button type="submit">Cadastrar</Button>
               </div>
             </form>
           </Form>
