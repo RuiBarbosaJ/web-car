@@ -1,13 +1,14 @@
-import { useState } from "react";
 import logo from "../assets/logo.svg";
 import { FiUser } from "react-icons/fi";
 import { FiLogIn } from "react-icons/fi";
 
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
+
 export function Header() {
-  const [isLogged, setIsLogged] = useState(false); // Se o usuario esta logado ou não
-  const [loadingAuth, setLoadingAuth] = useState(false); // Se esta carregando ou não
+  const { signed, loadingAuth } = useContext(AuthContext);
 
   return (
     <>
@@ -16,7 +17,7 @@ export function Header() {
           <Link to={"/"}>
             <img src={logo} alt="Logo Web Carros" className="w-[146px] h-8" />
           </Link>
-          {isLogged && !loadingAuth ? (
+          {signed && !loadingAuth ? (
             <Link to={"/dashboard"}>
               <div className="border-2 rounded-full p-1 border-gray-900">
                 <FiUser size={22} color="black" />

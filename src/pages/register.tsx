@@ -22,8 +22,12 @@ import {
 } from "firebase/auth";
 import { useEffect } from "react";
 
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
+
 export function Register() {
   const navigate = useNavigate();
+  const { handleInfoUser } = useContext(AuthContext);
 
   // Zod define as regras do formulário
   const schema = z.object({
@@ -60,6 +64,13 @@ export function Register() {
         await updateProfile(userCredencial.user, {
           displayName: data.nome,
         });
+
+        handleInfoUser({
+          name: data.nome,
+          email: data.email,
+          uid: userCredencial.user.uid,
+        });
+
         console.log("Cadastrado com sucesso!");
         navigate("/dashboard", { replace: true });
       })

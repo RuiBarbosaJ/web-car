@@ -1,5 +1,4 @@
 import logo from "../assets/logo.svg";
-import { useEffect } from "react";
 
 import {
   FormControl,
@@ -42,7 +41,9 @@ export function Login() {
     mode: "onChange",
   });
 
-  function handleLogin(data: FormData) {
+  async function handleLogin(data: FormData) {
+    await signOut(auth);
+
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((user) => {
         console.log("Logado com sucesso!");
@@ -54,14 +55,6 @@ export function Login() {
         console.log(error);
       });
   }
-
-  useEffect(() => {
-    async function handleLogout() {
-      await signOut(auth);
-    }
-
-    handleLogout();
-  }, []);
 
   return (
     <Conteiner>
