@@ -35,6 +35,7 @@ function gerarImagemAleatoria(car: CarProps) {
 
 export function Home() {
   const [cars, setCars] = useState<CarProps[]>([]);
+  const [loadImages, setLoadImages] = useState<string[]>([]);
 
   useEffect(() => {
     async function loadCars() {
@@ -66,11 +67,7 @@ export function Home() {
   }
 
   function handleImageLoad(id: string) {
-    return (
-      <div>
-        <h1 className="font-extralight">CARREGANDO... {id}</h1>
-      </div>
-    );
+    setLoadImages((prevImageLoaded) => [...prevImageLoaded, id]);
   }
 
   return (
@@ -102,11 +99,22 @@ export function Home() {
         {cars.map((car) => (
           <Link key={car.id} to={`/car/${car.id}`}>
             <section key={car.id} className="bg-white w-full rounded-lg p-3">
+              <div
+                className="w-full h-72 rounded-lg bg-slate-200 text-center "
+                style={{
+                  display: loadImages.includes(car.id) ? "none" : "block",
+                }}
+              >
+                Carregando...
+              </div>
               <img
-                className="w-full rounded-lg mb-2 max-h-72 object-cover hover:scale-105 transition-all"
+                className="w-full rounded-lg mb-2 max-h-70 object-cover hover:scale-105 transition-all"
                 src={car.images?.[0]?.url ?? gerarImagemAleatoria(car)}
                 alt={car.name}
                 onLoad={() => handleImageLoad(car.id)}
+                style={{
+                  display: loadImages.includes(car.id) ? "block" : "none",
+                }}
               />
               <strong className="font-bold block mb-1">
                 {car.name} | {car.model}
