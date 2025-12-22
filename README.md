@@ -1,32 +1,24 @@
-# 📊 CurrencyCripto
+# 📌 Aplicação Web com React, TypeScript e Firebase
 
-Aplicação web de consulta de cotações de criptomoedas e moedas, construída com **React + TypeScript + Vite**.
+Projeto desenvolvido com **React e TypeScript**, utilizando **Firebase** como Backend as a Service para autenticação e controle de dados em tempo real. A interface foi construída com **Tailwind CSS** em conjunto com **shadcn/ui**, garantindo uma UI moderna, responsiva e acessível.
 
-Esse projeto permite visualizar valores de diferentes moedas e criptomoedas em tempo real, consumindo dados de APIs externas, e foi desenvolvido com foco em **frontend responsivo e organizado**.
-
----
+A aplicação implementa **validação de formulários com React Hook Form e Zod**, assegurando tipagem forte, consistência dos dados e melhor experiência do usuário. O projeto evidencia boas práticas de desenvolvimento front-end, como componentização, organização de código e integração com serviços externos.
 
 ## 🚀 Tecnologias utilizadas
 
-- **React** – Biblioteca JavaScript para criação de interfaces de usuário  
-- **TypeScript** – Tipagem estática para maior segurança de código  
-- **Vite** – Ferramenta de build rápida para desenvolvimento web  
-- **CSS** – Estilização visual dos componentes  
-- **APIs de cotação** – Consumo de dados externos para exibir valores atualizados
+- **React**
+- **TypeScript**
+- **Firebase (Auth / Database)**
+- **React Hook Form**
+- **Zod**
+- **Tailwind CSS**
+- **shadcn/ui**
 
----
+## 🎯 O que este projeto demonstra
 
-## 🧠 Funcionalidades
+- Integração eficiente entre **front-end e backend** utilizando Firebase  
+- Uso avançado de **TypeScript aplicado na validação e nos formulários**  
+- Construção de **interfaces modernas e reutilizáveis**  
+- Preocupação com **qualidade de código, UX e escalabilidade**
 
-- Consulta de valores de moedas tradicionais (ex: USD, EUR)  
-- Consulta de valores de criptomoedas (ex: BTC, ETH)  
-- Interface simples e clara para exibição de resultados  
-- Projeto focado em organização de componentes e boas práticas
-
----
-
-## 📥 Instalação
-
-1. Faça o clone do repositório:
-   ```bash
-   git clone https://github.com/RuiBarbosaJ/CurrencyCripto.git
+Este projeto faz parte do meu portfólio e reflete minha evolução prática no desenvolvimento de aplicações web modernas.
