@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# 📊 CurrencyCripto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web de consulta de cotações de criptomoedas e moedas, construída com **React + TypeScript + Vite**.
 
-Currently, two official plugins are available:
+Esse projeto permite visualizar valores de diferentes moedas e criptomoedas em tempo real, consumindo dados de APIs externas, e foi desenvolvido com foco em **frontend responsivo e organizado**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tecnologias utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** – Biblioteca JavaScript para criação de interfaces de usuário  
+- **TypeScript** – Tipagem estática para maior segurança de código  
+- **Vite** – Ferramenta de build rápida para desenvolvimento web  
+- **CSS** – Estilização visual dos componentes  
+- **APIs de cotação** – Consumo de dados externos para exibir valores atualizados
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧠 Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+- Consulta de valores de moedas tradicionais (ex: USD, EUR)  
+- Consulta de valores de criptomoedas (ex: BTC, ETH)  
+- Interface simples e clara para exibição de resultados  
+- Projeto focado em organização de componentes e boas práticas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## 📥 Instalação
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default defineConfig([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+1. Faça o clone do repositório:
+   ```bash
+   git clone https://github.com/RuiBarbosaJ/CurrencyCripto.git
